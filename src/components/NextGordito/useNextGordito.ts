@@ -1,13 +1,13 @@
-import { server } from "../../util/server";
-import useMount from "../../util/useMount";
-import { useState, useRef, useMemo, useCallback } from "react";
-import { possibleGorditos } from "./randomPeople";
-import useVelocity from "./useVelocity";
+import { server } from '../../util/server'
+import useMount from '../../util/useMount'
+import { useState, useRef, useMemo, useCallback } from 'react'
+import { possibleGorditos } from './randomPeople'
+import useVelocity from './useVelocity'
 
 export default function useNextGordito() {
-  const [nextGordito, setNextGordito] = useState(possibleGorditos[1]);
-  const gordito = useRef<string | null>(null);
-  const [isReady, setIsReady] = useState(false);
+  const [nextGordito, setNextGordito] = useState(possibleGorditos[1])
+  const gordito = useRef<string | null>(null)
+  const [isReady, setIsReady] = useState(false)
 
   const { run, stop } = useVelocity(
     useMemo(
@@ -17,32 +17,32 @@ export default function useNextGordito() {
             const next =
               possibleGorditos[
                 Math.floor(Math.random() * possibleGorditos.length)
-              ];
+              ]
 
-            setNextGordito(next);
+            setNextGordito(next)
           } else {
-            setNextGordito(gordito.current as string);
-            setIsReady(true);
+            setNextGordito(gordito.current as string)
+            setIsReady(true)
           }
         },
       }),
       [],
     ),
-  );
+  )
 
   const fetchGordito = useCallback(() => {
-    setIsReady(false);
-    run();
-    server.get<{ gordito: string }>("gordito").then((r) => {
-      gordito.current = r.gordito;
-      stop();
-      console.log("Got gordito");
-    });
-  }, [run, stop]);
+    setIsReady(false)
+    run()
+    server.get<{ gordito: string }>('gordito').then((r) => {
+      gordito.current = r.gordito
+      stop()
+      console.log('Got gordito')
+    })
+  }, [run, stop])
 
   useMount(() => {
-    fetchGordito();
-  });
+    fetchGordito()
+  })
 
-  return { isReady, nextGordito, fetchGordito };
+  return { isReady, nextGordito, fetchGordito }
 }

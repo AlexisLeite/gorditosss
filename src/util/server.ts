@@ -4,8 +4,8 @@ export const server = new (class Server {
 
     return new Promise((resolve) => {
       setTimeout(() => {
-        resolve({ gordito: "elPepe" } as unknown as T);
-      }, 1200);
-    });
+        resolve({ gordito: 'elPepe' } as unknown as T)
+      }, 1200)
+    })
   }
-})();
+})()

@@ -1,9 +1,9 @@
-import CachedIcon from "@mui/icons-material/Cached";
-import { Box, IconButton, Typography } from "@mui/material";
-import useNextGordito from "./useNextGordito";
+import CachedIcon from '@mui/icons-material/Cached'
+import { Box, IconButton, Typography } from '@mui/material'
+import useNextGordito from './useNextGordito'
 
 export const NextGordito = () => {
-  const { isReady, fetchGordito, nextGordito } = useNextGordito();
+  const { isReady, fetchGordito, nextGordito } = useNextGordito()
 
   return (
     <Box>
@@ -11,12 +11,12 @@ export const NextGordito = () => {
       {isReady && (
         <IconButton
           onClick={() => {
-            fetchGordito();
+            fetchGordito()
           }}
         >
           <CachedIcon />
         </IconButton>
       )}
     </Box>
-  );
-};
+  )
+}
