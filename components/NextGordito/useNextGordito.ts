@@ -1,5 +1,5 @@
-import { server } from "@/util/server";
-import useMount from "@/util/useMount";
+import { server } from "../../util/server";
+import useMount from "../../util/useMount";
 import { useState, useRef, useMemo, useCallback } from "react";
 import { possibleGorditos } from "./randomPeople";
 import useVelocity from "./useVelocity";
