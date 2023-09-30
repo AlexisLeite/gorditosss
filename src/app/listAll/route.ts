@@ -20,7 +20,8 @@ export const list: TGorditoTurno[] = [
   { name: 'Roberto', date: getRandomDate() },
 ]
 
-export async function GET() {
+export async function GET(request: Request) {
+  console.log(request.body?.locked)
   /**
    * Este método debería devolver una lista ordenada de los próximos cocineros.
    */
