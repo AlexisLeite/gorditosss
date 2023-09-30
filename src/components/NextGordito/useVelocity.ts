@@ -2,7 +2,7 @@ import { useCallback, useRef } from 'react'
 
 export default function useVelocity({
   action,
-  maxTimes = 100,
+  maxTimes = 40,
   maxVelocity = 400,
 }: {
   action: (finished: boolean) => unknown
@@ -15,7 +15,7 @@ export default function useVelocity({
 
   const getVelocity = useCallback(() => {
     const progress = runTimes.current / maxTimes
-    const currentVelocity = maxVelocity * progress ** 5
+    const currentVelocity = maxVelocity * progress ** 8
 
     return currentVelocity
   }, [maxTimes, maxVelocity])

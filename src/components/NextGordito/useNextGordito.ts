@@ -33,10 +33,11 @@ export default function useNextGordito() {
   const fetchGordito = useCallback(() => {
     setIsReady(false)
     run()
-    server.get<{ gordito: string }>('gordito').then((r) => {
-      gordito.current = r.gordito
-      stop()
-      console.log('Got gordito')
+    server.get('nextGordito').then((r) => {
+      if (r) {
+        gordito.current = r.next
+        stop()
+      }
     })
   }, [run, stop])
 

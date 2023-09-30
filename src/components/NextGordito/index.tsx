@@ -7,16 +7,20 @@ export const NextGordito = () => {
 
   return (
     <Box>
-      <Typography variant="h1">El próximo gordito es {nextGordito}</Typography>
-      {isReady && (
+      <Typography variant="h2">El próximo gordito es:</Typography>
+      <Typography variant="h1" textAlign="right">
+        {nextGordito}
+      </Typography>
+      <Box alignItems="end" display="flex" justifyContent={'end'}>
         <IconButton
           onClick={() => {
             fetchGordito()
           }}
+          disabled={!isReady}
         >
           <CachedIcon />
         </IconButton>
-      )}
+      </Box>
     </Box>
   )
 }
